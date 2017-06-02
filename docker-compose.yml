@@ -1,0 +1,35 @@
+version: "3"
+services:
+    member-1:
+        container_name: member-1
+        image: tylevine/odl-systemmetrics-member1:latest
+        ports:
+            - "8181:8181"
+            - "8101:8101"
+        build:
+            context: .
+            dockerfile: Dockerfile-clustered
+            args:
+                membername: member-1
+    member-2:
+        container_name: member-2
+        image: tylevine/odl-systemmetrics-member2:latest
+        ports:
+            - "8182:8181"
+            - "8102:8101"
+        build:
+            context: .
+            dockerfile: Dockerfile-clustered
+            args:
+                membername: member-2
+    member-3:
+        container_name: member-3
+        image: tylevine/odl-systemmetrics-member3:latest
+        ports:
+            - "8183:8181"
+            - "8103:8101"
+        build:
+            context: .
+            dockerfile: Dockerfile-clustered
+            args:
+                membername: member-3

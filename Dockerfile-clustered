@@ -1,0 +1,9 @@
+FROM tylevine/odl-systemmetrics-base:latest
+MAINTAINER Tyler Levine <tylevine@cisco.com>
+
+ARG membername
+
+# set up clustering config files
+COPY akka.conf /opt/systemmetrics/karaf/target/assembly/configuration/initial/akka.conf
+RUN sed -i -e "s/!NAME/$membername/g" /opt/systemmetrics/karaf/target/assembly/configuration/initial/akka.conf
+COPY module-shards.conf /opt/systemmetrics/karaf/target/assembly/configuration/initial/module-shards.conf
